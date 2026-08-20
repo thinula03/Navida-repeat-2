@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PAS Compliance Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <main class="app-shell">
+        <aside class="rail" aria-label="PAS command navigation">
+            <div class="identity">
+                <span class="identity-mark">P</span>
+                <div>
+                    <p>PAS</p>
+                    <strong>Approval Ops</strong>
+                </div>
+            </div>
+
+            <nav class="nav-stack" aria-label="Workspace sections">
+                <a class="active" href="#">
+                    <span>01</span>
+                    Intake
+                </a>
+                <a href="#">
+                    <span>02</span>
+                    Compliance
+                </a>
+                <a href="#">
+                    <span>03</span>
+                    Decision
+                </a>
+            </nav>
+
+            <section class="rail-card">
+                <p class="label">System state</p>
+                <div class="signal">
+                    <span></span>
+                    <strong>Operational</strong>
+                </div>
+                <p>Live validation and rule screening are connected to the API service.</p>
+            </section>
+        </aside>
+
+        <section class="surface">
+            <header class="topbar">
+                <div>
+                    <div class="title-kicker">
+                        <p class="label">Project Approval System</p>
+                        <span>Referral Coursework 25-26</span>
+                    </div>
+                    <h1>Proposal compliance screening</h1>
+                    <p class="topbar-copy">A polished intake layer for early ethics, budget, and resource governance.</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="quiet-button" id="resetForm" type="button">Reset</button>
+                    <button class="quiet-button accent" id="loadRiskSample" type="button">Load risk sample</button>
+                </div>
+            </header>
+
+            <section class="hero-strip" aria-label="Screening summary">
+                <article>
+                    <div class="rule-icon">B</div>
+                    <span>Budget rule</span>
+                    <strong>$5,000+</strong>
+                    <p>Manual academic coordinator review</p>
+                </article>
+                <article>
+                    <div class="rule-icon">R</div>
+                    <span>Resource rule</span>
+                    <strong>GPU &gt; 3</strong>
+                    <p>Advanced cluster monopoly risk</p>
+                </article>
+                <article>
+                    <div class="rule-icon">E</div>
+                    <span>Ethics rule</span>
+                    <strong>Bermuda</strong>
+                    <p>Restricted field research region</p>
+                </article>
+            </section>
+
+            <section class="command-strip" aria-label="Operational service indicators">
+                <article>
+                    <span>Endpoint</span>
+                    <strong>POST /api/proposal/analyse</strong>
+                </article>
+                <article>
+                    <span>Contract</span>
+                    <strong>JSON response envelope</strong>
+                </article>
+                <article>
+                    <span>Coverage</span>
+                    <strong>8 automated checks</strong>
+                </article>
+                <article>
+                    <span>Mode</span>
+                    <strong>Rule-based screening</strong>
+                </article>
+            </section>
+
+            <section class="workbench">
+                <form class="proposal-card" id="proposalForm" novalidate>
+                    <div class="section-heading">
+                        <div>
+                            <p class="label">Submission packet</p>
+                            <h2>Proposal request</h2>
+                        </div>
+                        <span class="badge">API connected</span>
+                    </div>
+
+                    <div class="dossier-strip" aria-label="Current proposal summary">
+                        <article>
+                            <span>Applicant</span>
+                            <strong id="summaryStudent">Navida Perera</strong>
+                        </article>
+                        <article>
+                            <span>Resource</span>
+                            <strong id="summaryResource">Survey Platform</strong>
+                        </article>
+                        <article>
+                            <span>Exposure</span>
+                            <strong id="summaryExposure">Low</strong>
+                        </article>
+                    </div>
+
+                    <section class="quality-panel" aria-label="Submission readiness">
+                        <div>
+                            <p class="label">Submission quality</p>
+                            <strong id="qualityScore">83%</strong>
+                        </div>
+                        <div class="quality-track">
+                            <span id="qualityMeter"></span>
+                        </div>
+                        <p id="qualityCopy">Ready for compliance analysis.</p>
+                    </section>
+
+                    <div class="field-grid">
+                        <label class="field wide">
+                            <span>Student name</span>
+                            <input name="studentName" autocomplete="name" required value="Navida Perera">
+                        </label>
+
+                        <label class="field wide">
+                            <span>Specialized resource</span>
+                            <select name="resourceRequested" required>
+                                <option>Survey Platform</option>
+                                <option>Advanced GPU Cluster</option>
+                                <option>Cloud NLP Toolkit</option>
+                                <option>Secure Data Lab</option>
+                            </select>
+                        </label>
+
+                        <label class="field">
+                            <span>Quantity</span>
+                            <input name="quantity" type="number" min="1" value="1" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Budget USD</span>
+                            <input name="estimatedBudgetUSD" type="number" min="0.01" step="0.01" value="1500" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Ethics risk country</span>
+                            <input name="ethicsRiskCountry" required value="Sri Lanka">
+                        </label>
+
+                        <label class="field">
+                            <span>Research area</span>
+                            <input name="researchArea" value="Digital Systems">
+                        </label>
+                    </div>
+
+                    <div class="submit-row">
+                        <button class="primary-action" type="submit">
+                            Analyse compliance
+                            <span aria-hidden="true">→</span>
+                        </button>
+                        <p>Runs server-side validation, then applies budget, resource, and ethics screening rules.</p>
+                    </div>
+
+                    <section class="request-preview" aria-label="Live JSON request preview">
+                        <div class="preview-heading">
+                            <p class="label">Request preview</p>
+                            <span>application/json</span>
+                        </div>
+                        <pre id="requestPreview"></pre>
+                    </section>
+                </form>
+
+                <aside class="decision-card" aria-live="polite">
+                    <div class="section-heading">
+                        <div>
+                            <p class="label">Decision intelligence</p>
+                            <h2>Screening outcome</h2>
+                        </div>
+                        <span class="badge neutral" id="latencyBadge">Ready</span>
+                    </div>
+
+                    <div class="rule-posture" aria-label="Rule posture">
+                        <span id="budgetPosture">Budget clear</span>
+                        <span id="resourcePosture">Resource clear</span>
+                        <span id="ethicsPosture">Ethics clear</span>
+                    </div>
+
+                    <div class="decision approved" id="verdict">
+                        <span class="decision-mark">✓</span>
+                        <div>
+                            <p id="verdictLabel">Approved</p>
+                            <strong id="verdictMessage">No compliance risks detected.</strong>
+                        </div>
+                    </div>
+
+                    <div class="score-row">
+                        <div>
+                            <p class="label">Risk score</p>
+                            <strong id="riskScore">08</strong>
+                        </div>
+                        <div class="risk-track" aria-label="Risk score">
+                            <span id="riskMeterFill"></span>
+                        </div>
+                    </div>
+
+                    <div class="decision-meta" aria-label="Decision metadata">
+                        <article>
+                            <span>Validation</span>
+                            <strong id="validationState">Clean</strong>
+                        </article>
+                        <article>
+                            <span>Alert level</span>
+                            <strong id="alertLevel">None</strong>
+                        </article>
+                        <article>
+                            <span>Next step</span>
+                            <strong id="nextStep">Blind match</strong>
+                        </article>
+                    </div>
+
+                    <div class="output-stack" id="resultList">
+                        <article>
+                            <span>01</span>
+                            <p><strong>Awaiting submission</strong>Submit a proposal to generate a decision record.</p>
+                        </article>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="audit-strip" aria-label="Processing path">
+                <article>
+                    <span>01</span>
+                    <div>
+                        <strong>Model validation</strong>
+                        <p>Required fields, quantity, and budget integrity.</p>
+                    </div>
+                </article>
+                <article>
+                    <span>02</span>
+                    <div>
+                        <strong>Compliance rules</strong>
+                        <p>Budget, resource allocation, and ethics region screening.</p>
+                    </div>
+                </article>
+                <article>
+                    <span>03</span>
+                    <div>
+                        <strong>Decision envelope</strong>
+                        <p>Structured JSON response for downstream review.</p>
+                    </div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <script src="/assets/app.js" defer></script>
+</body>
+</html>

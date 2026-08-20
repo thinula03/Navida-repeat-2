@@ -1,0 +1,10 @@
+bin/
+obj/
+.nuget/
+.vs/
+.vscode/
+TestResults/
+*.user
+*.suo
+*.swp
+*.DS_Store

@@ -1,0 +1,16 @@
+@ProposalCompliance.Api_HostAddress = http://localhost:5056
+
+POST {{ProposalCompliance.Api_HostAddress}}/api/proposal/analyse
+Accept: application/json
+Content-Type: application/json
+
+{
+  "studentName": "Navida Perera",
+  "resourceRequested": "Advanced GPU Cluster",
+  "quantity": 4,
+  "ethicsRiskCountry": "Bermuda",
+  "estimatedBudgetUSD": 9000,
+  "researchArea": "Applied AI"
+}
+
+###
