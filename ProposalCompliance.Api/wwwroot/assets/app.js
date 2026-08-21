@@ -44,8 +44,10 @@ form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const startedAt = performance.now();
+    const proposal = readForm();
+
     latencyBadge.textContent = "Analysing";
-    renderVerdict("approved", "Analysing", "Compliance engine is evaluating this submission.", "…");
+    renderVerdict("approved", "Analysing", "Compliance engine is evaluating this submission.", "...");
     renderRisk(18, "var(--blue)");
     renderMeta("Checking", "Pending", "Analyse");
     setLoadingState(true);
@@ -54,7 +56,7 @@ form.addEventListener("submit", async (event) => {
         const response = await fetch("/api/proposal/analyse", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(readForm())
+            body: JSON.stringify(proposal)
         });
 
         const payload = await response.json();
